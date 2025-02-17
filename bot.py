@@ -1,3 +1,15 @@
+from dotenv import load_dotenv
+import os
+
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
+
+# Obtener el token de Discord desde las variables de entorno
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+
+# Verifica que el token se cargó correctamente
+print(DISCORD_TOKEN)  # Esto imprimirá el token en la consola para que puedas verificarlo
+
 import discord
 from discord.ext import commands
 from collections import defaultdict
@@ -65,4 +77,4 @@ async def estadisticas(ctx, member: discord.Member = None):
     await ctx.send(f"**Estadísticas de {member.name}:**\nTiempo total en voz: {round(activity_time, 2)} segundos")
 
 # Ejecutar el bot
-bot.run('tu_token_aqui')  # Reemplaza 'tu_token_aqui' con tu token real
+bot.run(DISCORD_TOKEN)  # Reemplaza 'tu_token_aqui' con tu token real
